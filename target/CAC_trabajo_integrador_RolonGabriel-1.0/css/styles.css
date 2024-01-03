@@ -25,19 +25,19 @@ body {
   width: 100vw;
   background-color: gray;
 }
-.card-estadios .main .card-show {
+.main .card-estadios {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
 }
-.estadio .card-estadios .main .card-show .show {
+.main .card-estadios .estadio {
   border: 1px solid black;
   cursor: pointer;
   text-align: center;
 }
-.estadio .card-estadios .main .card-show .show:hover {
+.main .card-estadios .estadio:hover {
   background-color: bisque;
   translate: 0 -10px;
   transition: 0.5s;

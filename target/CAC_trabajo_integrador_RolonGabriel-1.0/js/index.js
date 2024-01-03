@@ -22,7 +22,7 @@ async function dataIndex() {
         estadios.forEach(estadio => {
             console.log(estadio)
             cardEstadios.innerHTML += `
-                    <div class="estadio">
+                    <a href="pages/eventosEstadio.html"><div class="estadio">
                         <div class="estadio-img">
                             <img style="width: 300px; height: 200px;"' src="data:img/jpeg;base64,${estadio.fotoEstadio}" alt="">
                         </div>
@@ -34,7 +34,7 @@ async function dataIndex() {
                         <div class="estadio-eliminar">
                         <button class="eliminar" type="button" onclick="eliminarEstadio(${estadio.idEstadio})">Eliminar</button>
                         </div>
-                    </div>
+                    </div></a>
 
                 `
         });

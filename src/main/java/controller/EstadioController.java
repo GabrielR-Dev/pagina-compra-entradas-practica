@@ -37,8 +37,6 @@ public class EstadioController extends HttpServlet {
 
         switch (route) {
             case "getAll":
-
-
                 resp.setContentType("application/json; charset=utf-8");
 
                 estadios = EstadioDao.seleccionarTodos();

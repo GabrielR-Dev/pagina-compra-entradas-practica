@@ -1,0 +1,63 @@
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.inputs-data{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+body{
+    width: 80%;
+    background-color: aqua;
+    margin: 0 auto;
+
+}
+
+.header{
+
+    .nav{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100vw;
+
+        background-color: gray;
+
+        a{
+
+        }
+    }
+  }
+
+
+.main{
+    .card-estadios & .card-show{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+
+
+        .estadio & .show{
+            border: 1px solid black;
+            cursor: pointer;
+            text-align: center;
+
+            &:hover{
+                background-color: bisque;
+                translate: 0 -10px ;
+                transition: 0.5s;
+                animation:forwards;
+            }
+
+        }
+    }
+
+}
