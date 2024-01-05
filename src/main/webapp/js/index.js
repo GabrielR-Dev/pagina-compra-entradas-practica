@@ -22,23 +22,27 @@ async function dataIndex() {
         estadios.forEach(estadio => {
             console.log(estadio)
             cardEstadios.innerHTML += `
-                    <a href="pages/eventosEstadio.html"><div class="estadio">
-                        <div class="estadio-img">
-                            <img style="width: 300px; height: 200px;"' src="data:img/jpeg;base64,${estadio.fotoEstadio}" alt="">
-                        </div>
-                        <div class="estadio-content">
-                            <h3>Nombre: ${estadio.nombre}</h3>
-                            <p>Direccion: ${estadio.direccion}</p>
-                            <p>Capacidad: ${estadio.capacidad}</p>
-                        </div>
-                        <div class="estadio-eliminar">
-                        <button class="eliminar" type="button" onclick="eliminarEstadio(${estadio.idEstadio})">Eliminar</button>
-                        </div>
-                    </div></a>
+                    <form action="pages/eventosEstadio.html">
+                        <input type="hidden" name="estadio" value="${estadio.idEstadio}">    
+                        <button type="submit">
+                            <div class="estadio">
+                                <div class="estadio-img">
+                                    <img style="width: 300px; height: 200px;"' src="data:img/jpeg;base64,${estadio.fotoEstadio}" alt="">
+                                </div>
+                                <div class="estadio-content">
+                                    <h3>Nombre: ${estadio.nombre}</h3>
+                                    <p>Direccion: ${estadio.direccion}</p>
+                                    <p>Capacidad: ${estadio.capacidad}</p>
+                                </div>
+                                <div class="estadio-eliminar">
+                                <button class="eliminar" type="button" onclick="eliminarEstadio(${estadio.idEstadio})">Eliminar</button>
+                                </div>
+                            </div>
+                        </button>
+                    </form>
 
                 `
         });
-        console.log("Lisssssssssssssssssssto")
 
 
     } catch (error) {

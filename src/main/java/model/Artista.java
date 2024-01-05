@@ -46,4 +46,18 @@ public class Artista {
         this.estadio = estadio;
     }
 
+    
+    public Artista (String nombre, String generoMusical, String paisOrigen, int entradas ,double precio, int entradasVendidas ,
+            byte[] fotoArtista, Estadio estadio) {
+        //this.idArtista = idArtista;
+        this.nombre = nombre;
+        this.generoMusical = generoMusical;
+        this.paisOrigen = paisOrigen;
+        this.entradas = entradas;
+        this.precio = precio;
+        this.entradasVendidas = entradasVendidas;
+        this.fotoArtista = fotoArtista;
+        //this.fotoBase64 = fotoBase64;
+        this.estadio = estadio;
+    }
 }

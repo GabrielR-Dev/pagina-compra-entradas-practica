@@ -1,3 +1,24 @@
+* {
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  border: 0;
+  color: inherit;
+  /* cursor: default; */
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  -webkit-user-select: none;
+  /* for button */
+  -webkit-appearance: button;
+  /* for input */
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
 form {
   display: flex;
   justify-content: center;
@@ -25,19 +46,19 @@ body {
   width: 100vw;
   background-color: gray;
 }
-.card-estadios .main .card-show {
+.main .card-estadios {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
 }
-.estadio .card-estadios .main .card-show .show {
+.main .card-estadios form button .estadio {
   border: 1px solid black;
   cursor: pointer;
   text-align: center;
 }
-.estadio .card-estadios .main .card-show .show:hover {
+.main .card-estadios form button .estadio:hover {
   background-color: bisque;
   translate: 0 -10px;
   transition: 0.5s;
