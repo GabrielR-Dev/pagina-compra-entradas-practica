@@ -46,19 +46,19 @@ body {
   width: 100vw;
   background-color: gray;
 }
-.main .card-estadios {
+.main .cards {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
 }
-.main .card-estadios form button .estadio {
+.main .cards form button .estadio {
   border: 1px solid black;
   cursor: pointer;
   text-align: center;
 }
-.main .card-estadios form button .estadio:hover {
+.main .cards form button .estadio:hover {
   background-color: bisque;
   translate: 0 -10px;
   transition: 0.5s;

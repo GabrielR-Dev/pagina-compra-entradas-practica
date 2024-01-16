@@ -12,6 +12,7 @@ import jakarta.servlet.http.Part;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Estadio;
 
@@ -27,16 +28,20 @@ public class EstadioController extends HttpServlet {
     private static final Logger LOGGER = Logger.getLogger(EstadioController.class.getName());
 
     List<Estadio> estadios = null;
+    Estadio estadio = null;
+
     ObjectMapper objectMapper = new ObjectMapper();
     byte[] imageBytes;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        System.err.println("Entranco a doGet de estadio Controller");
         String route = req.getParameter("action");
 
         switch (route) {
             case "getAll":
+                System.err.println("Entranco al getAll");
                 resp.setContentType("application/json; charset=utf-8");
 
                 estadios = EstadioDao.seleccionarTodos();
@@ -50,8 +55,8 @@ public class EstadioController extends HttpServlet {
                     //estadio.setImagenBase64(imageBase64);
                 }
                 objectMapper.writeValue(resp.getWriter(), estadios);
-
                 break;
+
 
         }
 
@@ -124,13 +129,13 @@ public class EstadioController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
 
         String id = req.getParameter("eliminar");
-        
+
         try {
             System.out.println(id);
             EstadioDao.bajaEstadio(Integer.parseInt(id));
 
         } catch (NumberFormatException e) {
-            
+
         }
     }
 

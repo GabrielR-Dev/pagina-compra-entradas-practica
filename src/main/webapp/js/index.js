@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 async function dataIndex() {
 
 
-    const cardEstadios = document.querySelector(".card-estadios");
+    const cardEstadios = document.querySelector(".cards");
 
     try {
 
