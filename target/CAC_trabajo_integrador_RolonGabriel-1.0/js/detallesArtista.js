@@ -10,6 +10,11 @@ document.addEventListener("DOMContentLoaded", function (){
     let idEstadio = urlParams.get('estadio');
     let idArtista = urlParams.get('artista');
 
-    
+    console.log(valores);
+
+    fetch(`/app/estadio/artista?action=getArtista&estadio=${idEstadio}&id=${idArtista}`)
+        .then(
+            res => console.log(res.json())
+        )
 
 })

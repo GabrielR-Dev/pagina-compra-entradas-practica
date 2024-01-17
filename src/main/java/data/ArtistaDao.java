@@ -12,7 +12,7 @@ import model.Estadio;
 public class ArtistaDao {
 
     private static final String SQL_SELECT = "SELECT * FROM artistas WHERE idEstadio = ?";
-    private static final String SQL_SELECT_POR_ID = "SELECT * FROM artistas WHERE idArtista = ? & idEstadio = ?";
+    private static final String SQL_SELECT_POR_ID = "SELECT * FROM artistas WHERE idArtista = ? AND idEstadio = ?";
     private static final String SQL_UPDATE_ARTISTA = "UPDATE artistas SET nombre = ?, generoMusical = ?, paisOrigen = ?, entradas = ?,precio = ?, entradasVendidas ?, fotoArtista = ? WHERE idArtista = ?";
     private static final String SQL_INSERT = "INSERT INTO artistas(long idArtista ,String nombre, String generoMusical,"
             + " String paisOrigen, int entradas ,double precio, int entradasVendidas , byte[] fotoArtista, "
@@ -32,7 +32,8 @@ public class ArtistaDao {
             ResultSet rs = stm.executeQuery();
 
             while (rs.next()) {
-
+                
+                String id = rs.getString("idArtista");
                 String nombre = rs.getString("nombre");
                 String generoMusical = rs.getString("generoMusical");
                 String paisOrigen = rs.getString("paisOrigen");
@@ -47,7 +48,7 @@ public class ArtistaDao {
                     Blob blob = rs.getBlob("fotoArtista");
                     blob.
                 }*/
-                Artista art = new Artista(nombre, generoMusical, paisOrigen, entradas, precio, entradasVendidas, null, est);
+                Artista art = new Artista(Long.parseLong(id),nombre, generoMusical, paisOrigen, entradas, precio, entradasVendidas, null,null, est);
                 listaArtistas.add(art);
             }
         } catch (Exception e) {
@@ -59,6 +60,7 @@ public class ArtistaDao {
 
     public static Artista verArtistaPoId(Estadio est, int id) {
 
+        //System.err.println("Entrando a verArtistaPorId: Con los datos de Estadio= "+est+" y el id= "+id);
         Artista art = null;
 
         try {
@@ -67,6 +69,7 @@ public class ArtistaDao {
             stm.setInt(1, id);
             stm.setInt(2, est.getIdEstadio());
             ResultSet rs = stm.executeQuery();
+            System.err.println("Este es el resultset= "+rs);
 
             if (rs.next()) {
                 String nombre = rs.getString("nombre");
@@ -90,7 +93,9 @@ public class ArtistaDao {
             System.err.println("Error Artista Dao en funcion verArtistaPorId");
         }
 
+        System.err.println(art);
         return art;
+        
     }
 
     public Artista verArtistaPorNombre() {

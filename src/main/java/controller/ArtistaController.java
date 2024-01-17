@@ -57,7 +57,7 @@ public class ArtistaController extends HttpServlet {
 
             case "getArtista":
 
-                System.err.println("Entrando al getUser");
+                System.err.println("Entrando al getArtista");
                 resp.setContentType("application/json; charset=utf-8");
 
                 Artista artist = null;

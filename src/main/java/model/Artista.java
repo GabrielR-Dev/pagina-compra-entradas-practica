@@ -1,4 +1,4 @@
- package model;
+package model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Artista {
+
     private Long idArtista;
     private String nombre;
     private String generoMusical;
@@ -18,9 +19,9 @@ public class Artista {
     private byte[] fotoArtista;
     private String fotoBase64;
     private Estadio estadio;
-    
-        //constructor para craer objeto para subir
-    public Artista (String nombre, String generoMusical, String paisOrigen, int entradas ,double precio, int entradasVendidas , byte[] fotoArtista, String fotoBase64, Estadio estadio) {
+
+    //constructor para craer objeto para subir
+    public Artista(String nombre, String generoMusical, String paisOrigen, int entradas, double precio, int entradasVendidas, byte[] fotoArtista, String fotoBase64, Estadio estadio) {
         this.nombre = nombre;
         this.generoMusical = generoMusical;
         this.paisOrigen = paisOrigen;
@@ -32,8 +33,7 @@ public class Artista {
         this.estadio = estadio;
     }
 
-    //constructor para craer objeto para bajar
-    public Artista (long idArtista ,String nombre, String generoMusical, String paisOrigen, int entradas ,double precio, int entradasVendidas , byte[] fotoArtista, String fotoBase64, Estadio estadio) {
+    public Artista(Long idArtista, String nombre, String generoMusical, String paisOrigen, int entradas, double precio, int entradasVendidas, byte[] fotoArtista, String fotoBase64, Estadio estadio) {
         this.idArtista = idArtista;
         this.nombre = nombre;
         this.generoMusical = generoMusical;
@@ -46,8 +46,21 @@ public class Artista {
         this.estadio = estadio;
     }
 
-    
-    public Artista (String nombre, String generoMusical, String paisOrigen, int entradas ,double precio, int entradasVendidas ,
+    //constructor para craer objeto para bajar
+    public Artista(long idArtista, String nombre, String generoMusical, String paisOrigen, int entradas, double precio, int entradasVendidas, byte[] fotoArtista, String fotoBase64, Estadio estadio) {
+        this.idArtista = idArtista;
+        this.nombre = nombre;
+        this.generoMusical = generoMusical;
+        this.paisOrigen = paisOrigen;
+        this.entradas = entradas;
+        this.precio = precio;
+        this.entradasVendidas = entradasVendidas;
+        this.fotoArtista = fotoArtista;
+        this.fotoBase64 = fotoBase64;
+        this.estadio = estadio;
+    }
+
+    public Artista(String nombre, String generoMusical, String paisOrigen, int entradas, double precio, int entradasVendidas,
             byte[] fotoArtista, Estadio estadio) {
         //this.idArtista = idArtista;
         this.nombre = nombre;

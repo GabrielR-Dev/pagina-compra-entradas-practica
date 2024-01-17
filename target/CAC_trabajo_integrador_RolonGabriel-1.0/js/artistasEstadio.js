@@ -21,17 +21,20 @@ async function getAllArtistas() {
         if (!res.ok) throw (res.statusText);
 
         let artistas = await res.json();
+        console.log(artistas)
 
         artistas.forEach(art => {
 
             cards.innerHTML += `
                 <form action="../pages/detallesArtista.html">
-                    <input type="hidden" name="estadio" value="${art.idArtista}">    
+                    <input type="hidden" name="estadio" value="${idEstadio}">    
+                    <input type="hidden" name="artista" value="${art.idArtista}">    
                     <button type="submit">
                         <div class="estadio">
 
                             <div class="estadio-content">
-                                <h3>Nombre: ${artistas.nombre}</h3>
+                                <h3>Nombre: ${art.nombre}</h3>
+                                <h3>Nombre: ${art.idArtista}</h3>
                                 <p>Direccion: ${art.generoMusical}</p>
                                 <p>Capacidad: ${art.paisOrigen}</p>
                             </div>

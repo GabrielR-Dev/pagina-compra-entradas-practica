@@ -48,28 +48,39 @@ public class EstadioDao {
     }
 
     public static Estadio buscarEstadioPorId(int id) throws ClassNotFoundException {
-        System.out.println("SeleccionarPorID: numero ====  " + id);
+        System.out.println("Entrando a EstadioDao buscarPorId");
         Estadio estadio = null;
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
 
         try {
-            Connection conn = getConexion();
-            PreparedStatement st = conn.prepareCall(SQL_SELECT_POR_ID);
+            conn = getConexion();
+            st = conn.prepareCall(SQL_SELECT_POR_ID);
             st.setInt(1, id);
+            rs = st.executeQuery();
 
-            try (ResultSet rs = st.executeQuery()) {
-                if (rs.next()) {
-                    int idEstadio = rs.getInt(1);
-                    String nombre = rs.getString("nombre");
-                    String direccion = rs.getString("direccion");
-                    byte[] fotoEstadio = rs.getBytes("fotoEstadio");
-                    int capacidad = rs.getInt("capacidad");
+            if (rs.next()) {
+                int idEstadio = rs.getInt(1);
+                String nombre = rs.getString("nombre");
+                String direccion = rs.getString("direccion");
+                byte[] fotoEstadio = rs.getBytes("fotoEstadio");
+                int capacidad = rs.getInt("capacidad");
 
-                    estadio = new Estadio(idEstadio, nombre, direccion, fotoEstadio, capacidad);
-                }
+                estadio = new Estadio(idEstadio, nombre, direccion, fotoEstadio, capacidad);
             }
-            return estadio;
+
         } catch (SQLException e) {
             System.out.println("Error aquiii ");
+        } finally {
+            try{
+                close(rs);
+                close(st);
+                close(conn);   
+            }catch(SQLException e){
+                System.err.println(e);
+            }
+
         }
         return estadio;
     }
