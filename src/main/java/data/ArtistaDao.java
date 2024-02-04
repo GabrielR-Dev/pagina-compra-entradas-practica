@@ -21,7 +21,7 @@ public class ArtistaDao {
 
     public static List<Artista> verArtistas(Estadio est) {
 
-        System.out.println( "Entrando a la funcion: verArtistas de ArtistaDao");
+        System.out.println("Entrando a la funcion: verArtistas de ArtistaDao");
         List<Artista> listaArtistas = new ArrayList<>();
         try {
 
@@ -32,7 +32,7 @@ public class ArtistaDao {
             ResultSet rs = stm.executeQuery();
 
             while (rs.next()) {
-                
+
                 String id = rs.getString("idArtista");
                 String nombre = rs.getString("nombre");
                 String generoMusical = rs.getString("generoMusical");
@@ -48,7 +48,7 @@ public class ArtistaDao {
                     Blob blob = rs.getBlob("fotoArtista");
                     blob.
                 }*/
-                Artista art = new Artista(Long.parseLong(id),nombre, generoMusical, paisOrigen, entradas, precio, entradasVendidas, null,null, est);
+                Artista art = new Artista(Long.parseLong(id), nombre, generoMusical, paisOrigen, entradas, precio, entradasVendidas, null, null, est);
                 listaArtistas.add(art);
             }
         } catch (Exception e) {
@@ -62,23 +62,28 @@ public class ArtistaDao {
 
         //System.err.println("Entrando a verArtistaPorId: Con los datos de Estadio= "+est+" y el id= "+id);
         Artista art = null;
-
+        
+        Connection conn = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        
         try {
-            Connection conn = Conexion.getConexion();
-            PreparedStatement stm = conn.prepareStatement(SQL_SELECT_POR_ID);
+            conn = Conexion.getConexion();
+            stm = conn.prepareStatement(SQL_SELECT_POR_ID);
             stm.setInt(1, id);
             stm.setInt(2, est.getIdEstadio());
-            ResultSet rs = stm.executeQuery();
-            System.err.println("Este es el resultset= "+rs);
+            rs = stm.executeQuery();
+            System.err.println("Este es el resultset= " + rs);
 
             if (rs.next()) {
+                String idArt = rs.getString("idArtista");
                 String nombre = rs.getString("nombre");
                 String generoMusical = rs.getString("generoMusical");
                 String paisOrigen = rs.getString("paisOrigen");
                 int entradas = rs.getInt("entradas");
                 double precio = rs.getDouble("precio");
                 int entradasVendidas = rs.getInt("entradasVendidas");
-               /* int estadio = rs.getInt("estadio");
+                /* int estadio = rs.getInt("estadio");
 
                 byte[] fotoArtista = rs.getBytes("fotoArtista");
                 if(rs.getBlob("fotoArtista") != null){
@@ -86,7 +91,7 @@ public class ArtistaDao {
                     Blob blob = rs.getBlob("fotoArtista");
                     blob.
                 }*/
-                art = new Artista(nombre, generoMusical, paisOrigen, entradas, precio, entradasVendidas, null, est);
+                art = new Artista(Long.parseLong(idArt),nombre, generoMusical, paisOrigen, entradas, precio, entradasVendidas, null,null, est);
             }
 
         } catch (Exception e) {
@@ -95,7 +100,7 @@ public class ArtistaDao {
 
         System.err.println(art);
         return art;
-        
+
     }
 
     public Artista verArtistaPorNombre() {
@@ -128,8 +133,6 @@ public class ArtistaDao {
                 System.out.println("Ocurrio un error al editar");
             };
 
-            
-            
         } catch (Exception e) {
         }
         return null;

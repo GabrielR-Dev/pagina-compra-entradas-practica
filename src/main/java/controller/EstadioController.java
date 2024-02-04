@@ -120,12 +120,13 @@ public class EstadioController extends HttpServlet {
             e.printStackTrace();
             resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }
-
     }
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        System.err.println("Entrando al doDelete del estadioController");
+        
         req.setCharacterEncoding("UTF-8");
 
         String id = req.getParameter("eliminar");

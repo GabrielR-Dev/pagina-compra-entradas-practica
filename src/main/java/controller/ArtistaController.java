@@ -90,4 +90,14 @@ public class ArtistaController extends HttpServlet {
 
     }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
+        String route = req.getParameter("action");
+        
+        System.out.println("Entrando al doPost de ArtistaController con el action: " + route);
+    }
+    
+    
+
 }

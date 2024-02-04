@@ -11,7 +11,7 @@
                 window.location.replace("http://localhost:8080/app/index.html");
             if(!res.ok){
                 throw(res.statusText);
-            }
+            } 
     
 
             

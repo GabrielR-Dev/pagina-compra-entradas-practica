@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Estadio</title>
+
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+    <h1>Agregar Artista</h1>
+
+    <div>
+        <form method="post" enctype="multipart/form-data">
+
+            <div class="form-data">
+                <div class="inputs-data">
+                    <label for="nombre">Nombre: </label><input type="text" name="nombre" id="nombre" placeholder="Nombre">
+                    <label for="direccion">Genero Musical: </label><input type="text" name="genero" id="genero" placeholder="Genero Musical">
+                    <label for="direccion">Pais de Origen: </label><input type="text" name="pais" id="pais" placeholder="Pais de Origen">
+                    <label for="direccion">Entradas: </label><input type="number" name="entradas" id="entradas" placeholder="Entradas">
+                    <label for="direccion">Precio: </label><input type="number" name="precio" id="precio" placeholder="Precio">
+                    <label for="direccion">Foto: </label><input type="file" name="foto" id="foto" placeholder="Foto">
+                </div>
+
+                <div>
+                    <br>
+                    <button type="submit">Crear</button>
+                    <br>
+                    <br>
+                    <a href="../index.html"><button type="button">Volver</button></a>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    
+    <script src="../js/crearArtista.js"></script>
+</body>
+</html>

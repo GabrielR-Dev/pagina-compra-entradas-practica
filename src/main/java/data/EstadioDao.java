@@ -15,7 +15,7 @@ public class EstadioDao {
     private static final String SQL_SELECT_POR_ID = "SELECT * FROM estadios WHERE idEstadio = ?";
 
     private static final String SQL_INSERT = "INSERT INTO estadios(nombre, direccion, fotoEstadio, capacidad) VALUES(?, ?, ?, ?)";
-    private static final String SQL_LOGIC_DELETE = "DELETE FROM estadios WHERE idEstadio = ?";
+    private static final String SQL_LOGIC_DELETE = "delete FROM estadios where idEstadio = ?";
 
     public static List<Estadio> seleccionarTodos() {
         Estadio estadio = null;
@@ -73,11 +73,11 @@ public class EstadioDao {
         } catch (SQLException e) {
             System.out.println("Error aquiii ");
         } finally {
-            try{
+            try {
                 close(rs);
                 close(st);
-                close(conn);   
-            }catch(SQLException e){
+                close(conn);
+            } catch (SQLException e) {
                 System.err.println(e);
             }
 
@@ -118,10 +118,13 @@ public class EstadioDao {
     }
 
     public static int bajaEstadio(int id) {
+        System.err.println("Entrando a bajaEstadio del EstadioDao");
+
         Connection conn = null;
         PreparedStatement stmt = null;
         int registros = 0;
         try {
+
             conn = getConexion();
             stmt = conn.prepareStatement(SQL_LOGIC_DELETE);
             stmt.setInt(1, id);
